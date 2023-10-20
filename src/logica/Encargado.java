@@ -71,12 +71,8 @@ public class Encargado extends Persona{
 	}
 	*/
 	
-	public double calcularConsumo(Barco barco) {
-		
-		double consumo = 0;		
-		
-		return consumo;
-		
+	public double calcularRutaMaritima(Barco barco) {
+		return 0;
 	}
 	
 }

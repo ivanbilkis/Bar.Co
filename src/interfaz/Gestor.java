@@ -10,6 +10,7 @@ import logica.InicioSesion;
 public class Gestor implements InicioSesion {
 
 	public static void main(String[] args) {
+		Gestor valida = new Gestor();
 
 		Cliente cliente = new Cliente("", "", "", "", "", 0);
 		PantallaCliente pc = new PantallaCliente ();
@@ -39,7 +40,12 @@ public class Gestor implements InicioSesion {
 		do {
 			opciones2=JOptionPane.showOptionDialog(null,"Ingrese la opcion", null, 0, 0, null, menu, menu[0]);
 			
+		
+			
+				
 		if (opciones2 == 0) {
+			
+			do {
 			nombre = JOptionPane.showInputDialog("Ingrese su nombre de usuario (el nombre de usuario es su mail)");
 
 		    nombrerepetido = false;
@@ -48,38 +54,59 @@ public class Gestor implements InicioSesion {
 		            nombrerepetido = true;
 		            break;
 		        }
+		        
 		    }
-
-		    if (nombrerepetido==false) {
-		        clave = JOptionPane.showInputDialog("Ingrese su contraseña (tiene que tener 8 dígitos o más)");
-		        claveconfirmar = JOptionPane.showInputDialog("Repita su contraseña para confirmar");
-
-		        if (clave.equals(claveconfirmar) && !nombre.isEmpty() && nombre.length() > 2 && clave.length() >= 8) {
-
-
-		        	Cliente nuevoCliente = new Cliente("", "", nombre, clave, "", 0);
-
-		            cliente.getClientes().add(nuevoCliente);
-		            JOptionPane.showMessageDialog(null, "Registrado con éxito!");
-		            JOptionPane.showMessageDialog(null, cliente.getClientes());
-		        } else {
-		            JOptionPane.showMessageDialog(null, "Error en el ingreso de datos");
-		        }
-		    } else {
-		        JOptionPane.showMessageDialog(null, "El nombre de usuario ya existe");
-		    }
+		    if (nombrerepetido==true) {
+				JOptionPane.showMessageDialog(null, "Usuario repetido, ingrese otro nombre de usuario");
+			}else {
+				
+				
+	
+			    if (nombrerepetido==false && valida.iniciarSesionNombre(nombre)==true && valida.validarMail(nombre)== true) {
+			    	
+			        clave = JOptionPane.showInputDialog("Ingrese su contraseña (tiene que tener 8 dígitos o más)");
+			        claveconfirmar = JOptionPane.showInputDialog("Repita su contraseña para confirmar");
+	
+			        if (valida.iniciarSesionClave(clave, claveconfirmar)==true) {
+					
+			        	if (clave==claveconfirmar) {
+							
+							Cliente nuevoCliente = new Cliente("", "", nombre, clave, "", 0);
+							
+							cliente.getClientes().add(nuevoCliente);
+							JOptionPane.showMessageDialog(null, "Registrado con éxito!");
+							JOptionPane.showMessageDialog(null, cliente.getClientes());
+							
+						}else {
+								JOptionPane.showMessageDialog(null, "Error en la constraseña");
+						}
+			        	
+			        }
+			    }
+		    
+			}
+		        }while (valida.iniciarSesionNombre(nombre)==false && valida.validarMail(nombre)==false && valida.iniciarSesionClave(clave, claveconfirmar)==false);
+		            
+		        
 		
-
+		
 			
-			
-					//} while (iniciarSesion(nombre, clave)==true);
+		
+					
 			
 		
 		}else if (opciones2==1) {
+			
 			nombre=JOptionPane.showInputDialog("ingrese su nombre de usuario");
 			clave=JOptionPane.showInputDialog("ingrese su clave");
 			
+			if (valida.iniciarSesionNombre(nombre)==false) {
+				
 			
+			}
+			if (valida.iniciarSesionClave(clave, claveconfirmar)==false) {
+
+			}
 			
 			
 			for (int i = 0; i < cliente.getClientes().size(); i++) {
@@ -105,9 +132,11 @@ public class Gestor implements InicioSesion {
 			
 			
 		}
-		
+			
 		} while (opciones2!=2);
+		
 
 	}
 
 }
+
