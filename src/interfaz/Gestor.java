@@ -11,15 +11,20 @@ public class Gestor implements InicioSesion {
 
 	public static void main(String[] args) {
 		Gestor valida = new Gestor();
+<<<<<<< Updated upstream
 
 		Cliente cliente = new Cliente("", "", "", "", "", 0);
+=======
+		Validar va = new Validar ();
+		Cliente cliente = new Cliente("", "", "", "");
+>>>>>>> Stashed changes
 		PantallaCliente pc = new PantallaCliente ();
 		Encargado encargado = new Encargado ("", "", "", "", "", 0);
 		PantallaEncargado pe = new PantallaEncargado ();
 		Capitan capitan = new Capitan ("", "", "", "", "", 0);
 		PantallaCapitan pca = new PantallaCapitan ();
 		
-		Cliente cliente1 = new Cliente ("", "", "ivanivan", "123456789", "", 0);
+		Cliente cliente1 = new Cliente ("", "", "ivanivan", "123456789");
 		cliente.getClientes().add(cliente1);
 		
 		
@@ -32,7 +37,7 @@ public class Gestor implements InicioSesion {
 		
 		String clave = "";
 		String claveconfirmar="";
-		String nombre="";
+		String nombre="", apellido="", mail="";
 		boolean nombrerepetido;
 		
 		int opciones2;
@@ -47,7 +52,9 @@ public class Gestor implements InicioSesion {
 			
 			do {
 			nombre = JOptionPane.showInputDialog("Ingrese su nombre de usuario (el nombre de usuario es su mail)");
-
+			mail=nombre;
+			
+			apellido="perez";
 		    nombrerepetido = false;
 		    for (int i = 0; i < cliente.getClientes().size(); i++) {
 		        if (nombre.equalsIgnoreCase(cliente.getClientes().get(i).getMail())) {
@@ -60,6 +67,7 @@ public class Gestor implements InicioSesion {
 				JOptionPane.showMessageDialog(null, "Usuario repetido, ingrese otro nombre de usuario");
 			}else {
 				
+<<<<<<< Updated upstream
 			
 
 		    if (nombrerepetido==false && valida.iniciarSesionNombre(nombre)==true && valida.validarMail(nombre)== true) {
@@ -78,6 +86,33 @@ public class Gestor implements InicioSesion {
 		        
 		        }
 		    }
+=======
+				
+	
+			    if (nombrerepetido==false && valida.iniciarSesionNombre(nombre)==true && valida.validarMail(nombre)== true) {
+			    	
+			        clave = JOptionPane.showInputDialog("Ingrese su contraseña (tiene que tener 8 dígitos o más)");
+			        claveconfirmar = JOptionPane.showInputDialog("Repita su contraseña para confirmar");
+	
+			        
+			        if (valida.iniciarSesionClave(clave, claveconfirmar)==true) {
+					
+			        	
+			        	if (clave.equalsIgnoreCase(claveconfirmar) ) {
+							Cliente nuevoCliente = encargado.crearCliente(nombre, apellido, mail, clave);
+							System.out.println(nuevoCliente.getMail());
+							System.out.println(nuevoCliente.guardar());
+							
+							System.out.println(va.validarIngreso(nuevoCliente));
+							cliente.getClientes().add(nuevoCliente);
+							JOptionPane.showMessageDialog(null, "Registrado con éxito!");
+							//JOptionPane.showMessageDialog(null, cliente.getClientes());
+							
+					}
+			        	
+			        }
+			    }
+>>>>>>> Stashed changes
 		    
 			}
 		        }while (valida.iniciarSesionNombre(nombre)==false && valida.validarMail(nombre)==false && valida.iniciarSesionClave(clave, claveconfirmar)==false);

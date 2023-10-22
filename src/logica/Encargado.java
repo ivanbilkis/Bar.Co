@@ -15,7 +15,7 @@ public class Encargado extends Persona{
 	
 		
 	public Encargado(String nombre, String apellido, String mail, String clave, String rol, int idEncargado) {
-		super(nombre, apellido, mail, clave, rol);
+		super(nombre, apellido, mail, clave);
 		this.idEncargado = idEncargado;
 		this.encargados = encargados;
 	}
@@ -70,6 +70,13 @@ public class Encargado extends Persona{
 		
 	}
 	*/
+	public Cliente crearCliente (String nombre, String apellido, String mail, String clave) {
+		
+		
+		Cliente cliente = new Cliente (nombre, apellido, mail, clave);
+		
+		return cliente;
+	}
 	
 	public double calcularConsumo(Barco barco) {
 		
