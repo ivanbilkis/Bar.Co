@@ -12,7 +12,7 @@ public class Validar implements InicioSesion {
 	Gestor validarinter = new Gestor ();
 	
 	
-	public boolean validarIngreso (Cliente cliente, Encargado encargado, Capitan capitan) {
+	public boolean validarIngreso (Cliente cliente) {
 		
 		
 			return cliente.guardar();
