@@ -1,5 +1,7 @@
 package logica;
 
+import javax.swing.JOptionPane;
+
 public class Contenedor {
 	private int idContenedor;
 	private int capacidad;
@@ -32,5 +34,13 @@ public class Contenedor {
 	}
 	public void setDisponibilidad(boolean disponibilidad) {
 		this.disponibilidad = disponibilidad;
+	}
+	
+	public void Contener(Producto producto) {
+		if (producto.getPeso()<this.capacidad) {
+			JOptionPane.showMessageDialog(null, "Su producto podrá ser trasladado dentro de un contenedor");
+		} else {
+			JOptionPane.showMessageDialog(null, "Su producto no entra en el contenedor");
+		}
 	}
 }

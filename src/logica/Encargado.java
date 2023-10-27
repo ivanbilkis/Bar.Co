@@ -185,4 +185,13 @@ public class Encargado extends Persona{
 		
 		
 	}
+	public void asignarContenedor(Producto producto, Contenedor contenedor) {
+		String sql = "SELECT * FROM `producto` WHERE peso=?";
+		
+		try {
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
 }
