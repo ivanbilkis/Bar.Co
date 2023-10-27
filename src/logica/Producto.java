@@ -3,18 +3,19 @@ package logica;
 public class Producto {
 	private int idProducto;
 	private String nombre;
-	private Double peso;
+	private int peso;
 	private String tamaño;
-	private boolean fragil;
+	private String fragil;
 	
 	
-	public Producto(int idProducto, String nombre, Double peso, String tamaño, boolean fragil) {
+	public Producto(String nombre, String fragil,int peso) {
 		super();
 		this.idProducto = idProducto;
 		this.nombre = nombre;
+		this.fragil = fragil;
 		this.peso = peso;
 		this.tamaño = tamaño;
-		this.fragil = fragil;
+	
 	}
 
 
@@ -37,10 +38,10 @@ public class Producto {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public Double getPeso() {
+	public int getPeso() {
 		return peso;
 	}
-	public void setPeso(Double peso) {
+	public void setPeso(int peso) {
 		this.peso = peso;
 	}
 	public String getTamaño() {
@@ -49,10 +50,10 @@ public class Producto {
 	public void setTamaño(String tamaño) {
 		this.tamaño = tamaño;
 	}
-	public boolean isFragil() {
+	public String getFragil() {
 		return fragil;
 	}
-	public void setFragil(boolean fragil) {
+	public void setFragil(String fragil) {
 		this.fragil = fragil;
 	}
 }

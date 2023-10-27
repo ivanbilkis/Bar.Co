@@ -2,16 +2,17 @@ package interfaz;
 
 import javax.swing.JOptionPane;
 
+import logica.Cliente;
 import logica.Encargado;
 import logica.InicioSesion;
 
 public class PantallaEncargado implements InicioSesion{
 	
 	public void MenuEncargado(Encargado encargado) {
+		Cliente cli = new Cliente ("", "", "", "");
 		
 		
-		
-		String[] opEncargado = {"Asignar Contenedor","Generar envios","Ver Envios"};
+		String[] opEncargado = {"Asignar Contenedor","Generar envios","Ver Envios", "Eliminar clientes", "Salir"};
 		
 		int opciones=JOptionPane.showOptionDialog(null,"Ingrese la opcion", null, 0, 0, null, opEncargado, opEncargado[0]);
 		
@@ -25,8 +26,9 @@ public class PantallaEncargado implements InicioSesion{
 		case 2:
 			JOptionPane.showMessageDialog(null, "Lista de Envios: ");
 			break;
-		default:
-			break;
+		case 3:
+			encargado.eliminarCliente(cli);
+			 
 		}
 		
 		
