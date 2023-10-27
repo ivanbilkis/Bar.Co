@@ -135,13 +135,13 @@ public class Cliente extends Persona {
 	}
 	
 	 public boolean solicitarEnvio(Producto producto) {
-		    String sql = "INSERT INTO `producto `(`nombre_producto`, `fragilidad`, `peso`) VALUES (?,?,?,?)";
+		    String sql = "INSERT INTO `producto `(`nombre_producto`, `fragilidad`, `peso`) VALUES (?,?,?)";
 
 		    try {
 		        stmt = con.prepareStatement(sql);
 		        stmt.setString(1, producto.getNombre());
 		        stmt.setString(2, producto.getFragil());
-		        stmt.setLong(3, producto.getPeso());
+		        stmt.setDouble(3, producto.getPeso());
 		        System.out.println(sql);
 		        System.out.println(stmt);
 		        stmt.execute();

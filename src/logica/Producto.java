@@ -3,12 +3,12 @@ package logica;
 public class Producto {
 	private int idProducto;
 	private String nombre;
-	private int peso;
+	private double peso;
 	private String tamaño;
 	private String fragil;
 	
 	
-	public Producto(String nombre, String fragil,int peso) {
+	public Producto(String nombre, String fragil,double peso) {
 		super();
 		this.idProducto = idProducto;
 		this.nombre = nombre;
@@ -38,10 +38,10 @@ public class Producto {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public int getPeso() {
+	public double getPeso() {
 		return peso;
 	}
-	public void setPeso(int peso) {
+	public void setPeso(double peso) {
 		this.peso = peso;
 	}
 	public String getTamaño() {
